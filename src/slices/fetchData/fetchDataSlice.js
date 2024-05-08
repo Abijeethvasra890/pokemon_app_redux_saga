@@ -1,5 +1,5 @@
 
-import { FETCH_POKEMONS_FAILURE, FETCH_POKEMONS_REQUEST, FETCH_POKEMONS_SUCCESS } from "@/app/actions/fetchDataActions";
+import { FETCH_POKEMONS_FAILURE, FETCH_POKEMONS_REQUEST, FETCH_POKEMONS_SUCCESS } from "@/redux/actions/fetchDataActions";
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
 
@@ -24,14 +24,15 @@ const fetchDataSlice = createSlice({
         builder.addCase(FETCH_POKEMONS_SUCCESS, (state, action) => {
             state.isLoading = false;
             if (action.payload.page === "PLP") {
-                state.pokemons = action.payload.data;
+               //console.log(action.payload.data);
+               state.pokemons = [...state.pokemons, ...action.payload.data.results];     
             } else {
                 state.pokemonData = action.payload.data;
             }
         });
         builder.addCase(FETCH_POKEMONS_FAILURE, (state, action) => {
             state.isLoading = false;
-            state.error = action.error.message;
+            state.error = action.error ? action.error.message : 'Unknown error';
         });
     }
 });

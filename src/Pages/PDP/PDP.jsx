@@ -16,7 +16,7 @@ import {
 
 import Graph from '@/Components/Graph/Graph';
 import { useDispatch, useSelector } from 'react-redux';
-import { FETCH_POKEMONS_REQUEST } from '@/app/actions/fetchDataActions';
+import { FETCH_POKEMONS_REQUEST } from '@/redux/actions/fetchDataActions';
 //import { fetchData } from '@/features/fetchData/fetchDataSlice';
 
 

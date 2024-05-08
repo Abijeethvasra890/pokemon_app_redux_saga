@@ -40,3 +40,9 @@
   .toggle:checked + label::after {
     transform: translateX(100%);
   }
+
+  .toggle-text{
+    font-family: 'Segoe UI';
+    font-style: italic;
+    margin-left: -20px;
+  }

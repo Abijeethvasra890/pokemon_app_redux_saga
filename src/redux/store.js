@@ -1,7 +1,7 @@
 import { configureStore } from "@reduxjs/toolkit";
-import themeReducer from '../features/theme/themeSlice'
-import authReducer from '../features/auth/authSlice'
-import fetchDataReducer from "../features/fetchData/fetchDataSlice"
+import themeReducer from '../slices/theme/themeSlice'
+import authReducer from '../slices/auth/authSlice'
+import fetchDataReducer from "../slices/fetchData/fetchDataSlice"
 import createSagaMiddleware from 'redux-saga';
 import rootSaga from "./saga/rootSaga";
 

@@ -3,7 +3,8 @@
   @tailwind utilities;
   @layer base {
     :root {
-      --background: 0 0% 100%;
+      --background: rgb(255, 250, 240);
+      --home-text-color-mobile: black;
       --foreground: 222.2 84% 4.9%;
       --navbar-bg: #eee; 
       --navbar-fg: black;
@@ -41,6 +42,7 @@
 
     .dark {
       --background: #0e1935;
+      --home-text-color-mobile: wheat;
       --foreground: wheat;
       --navbar-bg: black; 
       --navbar-fg: white;

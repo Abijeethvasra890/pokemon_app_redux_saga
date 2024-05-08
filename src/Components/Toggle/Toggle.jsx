@@ -1,6 +1,6 @@
 import "./Toggle.css";
 import { useDispatch, useSelector } from 'react-redux';
-import { toggleDarkMode } from '@/features/theme/themeSlice';
+import { toggleDarkMode } from '@/slices/theme/themeSlice';
 
 export const Toggle = () => {
     const darkMode = useSelector((state) => state.theme.darkMode);
@@ -26,6 +26,7 @@ export const Toggle = () => {
         onChange={handleToggleDarkMode}
       />
       <label htmlFor="check"></label>
+      <div className="toggle-text">Toggle Theme</div>
     </div>
   );
 };

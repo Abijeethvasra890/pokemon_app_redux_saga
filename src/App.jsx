@@ -7,7 +7,7 @@ import PDP from './Pages/PDP/PDP'
 import { QueryClient, QueryClientProvider } from 'react-query';
 
 import { Provider } from 'react-redux'
-import { store } from './app/store'
+import { store } from './redux/store'
 
 
 

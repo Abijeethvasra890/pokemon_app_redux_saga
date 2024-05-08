@@ -23,6 +23,8 @@ const PokemonCard = ({pokemon, id}) => {
   const darkMode = useSelector((state)=>state.theme.darkMode);
 
   return (
+    <>
+    <Link to={`/pokemons/${id}`}>
     <div className = {`pokemon-card-container ${darkMode ? 'dark' : ''}`}>
       <Card className="m-1">
         <CardHeader>
@@ -32,12 +34,14 @@ const PokemonCard = ({pokemon, id}) => {
           <img className='size-56' src={imageURL} alt="Card image cap" />
         </CardContent>
         <CardFooter>
-        <Link to={`/pokemons/${id}`}>
+        
           <Button className="w-52" variant="default">Details</Button>
-        </Link>
+        
         </CardFooter>
       </Card>
     </div>
+    </Link>
+    </>
   )
 }
 

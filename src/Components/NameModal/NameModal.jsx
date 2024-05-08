@@ -2,7 +2,7 @@
 import React, { useState, useContext } from 'react';
 import { Button } from '../ui/button';
 import { useDispatch, useSelector } from 'react-redux';
-import { login } from '@/features/auth/authSlice';
+import { login } from '@/slices/auth/authSlice';
 
 
 const NameModal = () => {
@@ -19,7 +19,7 @@ const NameModal = () => {
     return (
         <div className="modal">
             <input type="text" value={name} placeholder='Enter Name' onChange={(e) => setName(e.target.value)} />
-            <Button size="xsm" onClick={() => handleLogin(name)}>Submit</Button>
+            <Button size="xsm" onClick={() => handleLogin(name)}>Sign In</Button>
         </div>
     );
 };

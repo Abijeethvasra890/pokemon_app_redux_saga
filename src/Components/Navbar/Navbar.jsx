@@ -6,7 +6,7 @@ import { Toggle } from '../Toggle/Toggle'
 
 import NameModal from '../NameModal/NameModal'
 import { useDispatch, useSelector } from 'react-redux'
-import { logout } from '@/features/auth/authSlice'
+import { logout } from '@/slices/auth/authSlice'
 
 
 const Navbar = () => {
@@ -26,7 +26,7 @@ const Navbar = () => {
         <nav className={`navbar ${darkMode ? 'dark' : ''}`}>
           <div className="title">Pokémon App</div>
           <div className='usertext'>{isAuthenticated ? `Hi, ${userName}` : <NameModal />}</div>
-          <Toggle />
+          
           <div className='buttonsRight'>
            
             <div >
@@ -39,6 +39,7 @@ const Navbar = () => {
                 {isAuthenticated?
                   <Button onClick={handleLogout} className="m-2">Logout</Button>:""
                 }
+                <Toggle />
                 
             </div>
            
