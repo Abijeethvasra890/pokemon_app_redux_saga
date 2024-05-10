@@ -7,21 +7,7 @@
     font-weight: 600;
     font-style: italic;
 }
-/* Skeleton loading effect styles */
-.skeleton {
-    background-color: #f0f0f0; /* Light gray background */
-    animation: pulse 1.5s infinite alternate; /* Animation for pulsating effect */
-  }
-  
-  @keyframes pulse {
-    0% {
-      opacity: 0.6; /* Initial opacity */
-    }
-    100% {
-      opacity: 1; /* Final opacity */
-    }
-  }
-  
+
 
 .hero-text{
     margin:100px; 
@@ -66,11 +52,18 @@
         color: var(--home-text-color-mobile);
         
     }
+    .hero-container {
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+        margin-bottom: 10px;
+    }
     .hero-text{
         margin: 50px;
+        position: relative;
     }
     .text-body{
-        margin-top: 700px;
+        margin-top: 100px;
         display: flex;
         flex-direction: column;
     }
