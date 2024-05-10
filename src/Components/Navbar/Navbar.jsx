@@ -1,5 +1,5 @@
-import React,{ useContext }  from 'react'
-import { Link } from 'react-router-dom'
+import React,{ useContext, useState }  from 'react'
+import { Link, NavLink } from 'react-router-dom'
 import { Button } from '../ui/button'
 import '../Navbar/Navbar.css'
 import { Toggle } from '../Toggle/Toggle'
@@ -7,6 +7,7 @@ import { Toggle } from '../Toggle/Toggle'
 import NameModal from '../NameModal/NameModal'
 import { useDispatch, useSelector } from 'react-redux'
 import { logout } from '@/slices/auth/authSlice'
+import { Switch } from '../ui/switch'
 
 
 const Navbar = () => {
@@ -16,6 +17,7 @@ const Navbar = () => {
   const darkMode = useSelector((state)=>state.theme.darkMode);
   const isAuthenticated = useSelector((state) => state.auth.isAuthenticated);
   const userName = useSelector((state) => state.auth.userName);
+  const [menuOpen, setMenuOpen] = useState(false);
 
   const handleLogout = () => {
     dispatch(logout());
@@ -26,17 +28,25 @@ const Navbar = () => {
         <nav className={`navbar ${darkMode ? 'dark' : ''}`}>
           <div className="title">Pokémon App</div>
           <div className='usertext'>{isAuthenticated ? `Hi, ${userName}` : <NameModal />}</div>
-          
           <div className='buttonsRight'>
-                <Link className = "nav-item nav-link active" to="/">
-                  <Button className="mr-2">Home</Button>
-                </Link>
-                <Link className = "nav-item nav-link" to="/pokemons"> 
-                  <Button className="mr-5">Pokemon List</Button>
-                </Link>
-                {isAuthenticated?
-                  <Button onClick={handleLogout} className="mr-5">Logout</Button>:""
-                }
+                <div className="menu" onClick={() => setMenuOpen(!menuOpen)}>
+                  <span></span>
+                  <span></span>
+                  <span></span>
+                </div>
+                <ul className={menuOpen ? "open" : ""}>
+                  <li>
+                    <NavLink to="/">Home</NavLink>
+                  </li>
+                  <li>
+                    <NavLink to="/pokemons">Pokemon List</NavLink>
+                  </li>
+                  {isAuthenticated?
+                    <Button onClick={handleLogout} className="mr-5">Logout</Button>:""
+                  }
+                </ul>
+               
+                {/*<Switch />*/}
                 <Toggle className="toggle"/>
           </div>
         </nav>

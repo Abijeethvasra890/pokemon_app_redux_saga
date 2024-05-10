@@ -61,7 +61,7 @@ const PLP = () => {
     <div>
       <Navbar />
       <div className={`PLPtitle ${darkMode ? 'dark' : ''}`}>Pokemons List</div>
-      <div ref={pokemonListRef} className={`pokemon-grid ${darkMode ? 'dark' : ''}`} style={{ overflowY: 'auto', maxHeight: 'calc(100vh - 100px)' }}>
+      <div ref={pokemonListRef} className={`pokemon-grid ${darkMode ? 'dark' : ''}`} style={{ overflowY: 'auto', maxHeight: 'calc(100vh - 80px)' }}>
         {data?.length > 0 ? data.map((pokemon, index) => (
           <PokemonCard key={index} pokemon={pokemon} id={index + 1} isLoading={isLoading}/>
         )) : 

@@ -1,0 +1,18 @@
+.input{
+    display: flex;
+    align-items: center;
+    margin-top: 10px;
+}
+
+.textbox{
+    margin-right: 5px;
+}
+
+@media (max-width: 480px) {
+    .input{
+        width: 100%;
+    }
+    .textbox{
+        width: 250px;
+    }
+}
