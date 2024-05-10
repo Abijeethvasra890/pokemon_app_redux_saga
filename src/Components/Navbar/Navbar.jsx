@@ -37,7 +37,7 @@ const Navbar = () => {
                 {isAuthenticated?
                   <Button onClick={handleLogout} className="mr-5">Logout</Button>:""
                 }
-                <Toggle />
+                <Toggle className="toggle"/>
           </div>
         </nav>
     </div>

@@ -20,8 +20,6 @@
     margin-bottom: 5px;
 }
 
-
-
 /* Media query for mobile view */
 @media (max-width: 768px) {
     .navbar {
