@@ -12,3 +12,55 @@
 }
 
 
+
+/* Skeleton styles */
+.skeleton {
+    background-color: #f6f7f8; /* Background color for skeleton */
+    width: 18rem;
+    margin: 10px;
+  }
+
+  @keyframes skeleton-loading {
+    0% {
+      background-color: hsl(200, 20%, 80%);
+    }
+    100% {
+      background-color: hsl(200, 20%, 95%);
+    }
+  }
+  
+  .skeleton .skeleton-title {
+    animation: skeleton-loading 1s linear infinite alternate;
+    height: 20px; 
+    margin-top: 15px;
+    margin-left: 25px;
+    width: 70%;
+    background-color: #ddd;
+    margin-bottom: 8px; 
+  }
+  
+  .skeleton .skeleton-image {
+    animation: skeleton-loading 1s linear infinite alternate;
+    height: 120px;
+    width: 225px; 
+    margin-top: 20px;
+    background-color: #ddd; 
+  }
+  
+.skeleton-button-container {
+    display: flex;
+    justify-content: center; /* Center horizontally */
+    align-items: center; /* Center vertically */
+  }
+  
+  .skeleton .skeleton-button {
+    animation: skeleton-loading 1s linear infinite alternate;
+    height: 30px; 
+    width: 200px; 
+    background-color: #ddd; 
+    margin-top: -8px;
+    
+  }
+  
+
+

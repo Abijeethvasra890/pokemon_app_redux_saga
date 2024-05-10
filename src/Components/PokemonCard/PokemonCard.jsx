@@ -14,35 +14,49 @@ import {
 
 import { useSelector } from 'react-redux';
 
-
 //Pokemon Card -> Displays the data of each pokemon in the form of Cards
 
-const PokemonCard = ({pokemon, id}) => {
+const PokemonCard = ({pokemon, id, isLoading}) => {
   const imageURL = getImageURL(id);
   //const {darkMode} = useContext(ThemeContext);
   const darkMode = useSelector((state)=>state.theme.darkMode);
 
+  // Render skeleton if isLoading is true
+  if (isLoading) {
+    return (
+      <div className={`pokemon-card-container ${darkMode ? 'dark' : ''} skeleton`}>
+        <Card className="m-1">
+          <div className="skeleton-title"></div>
+          <CardContent>
+            <div className='skeleton-image size-56'></div>
+          </CardContent>
+          <CardFooter className="skeleton-button-container">
+            <div className="skeleton-button"></div>
+          </CardFooter>
+        </Card>
+      </div>
+    );
+  }
+
   return (
-    <>
     <Link to={`/pokemons/${id}`}>
-    <div className = {`pokemon-card-container ${darkMode ? 'dark' : ''}`}>
-      <Card className="m-1">
-        <CardHeader>
-          <CardTitle>{pokemon.name}</CardTitle>
-        </CardHeader>
-        <CardContent>
-          <img className='size-56' src={imageURL} alt="Card image cap" />
-        </CardContent>
-        <CardFooter>
-        
-          <Button className="w-52" variant="default">Details</Button>
-        
-        </CardFooter>
-      </Card>
-    </div>
+      <div className={`pokemon-card-container ${darkMode ? 'dark' : ''}`}>
+        <Card className="m-1">
+          <CardHeader>
+            <CardTitle>{pokemon.name}</CardTitle>
+          </CardHeader>
+          <CardContent>
+            <img className='size-56' src={imageURL} alt="Card image cap" 
+              style={{ filter: `filter: drop-shadow(30px 10px 4px #4444dd);` }}
+            />
+          </CardContent>
+          <CardFooter >
+            <Button className="w-52" variant="default">Details</Button>
+          </CardFooter>
+        </Card>
+      </div>
     </Link>
-    </>
-  )
+  );
 }
 
-export default PokemonCard
+export default PokemonCard;

@@ -1,57 +1,73 @@
+import React, { useEffect, useRef } from 'react';
 import PokemonCard from '../../Components/PokemonCard/PokemonCard';
-import './PLP.css'
+import './PLP.css';
 import Navbar from '../../Components/Navbar/Navbar';
 import { useDispatch, useSelector } from 'react-redux';
-import { useEffect, useState } from 'react';
 import { FETCH_POKEMONS_REQUEST } from '@/redux/actions/fetchDataActions';
-import InfiniteScroll from 'react-infinite-scroll-component';
-
-//PLP - Pokemon Listing Page -> displays the fetched pokemons in Cards
-
-//const apiURL = 'https://pokeapi.co/api/v2/pokemon/';
-
 
 const PLP = () => {
   const dispatch = useDispatch();
-  const [offsetval, setOffsetval] = useState(0);
+  const [offsetval, setOffsetval] = React.useState(0);
+  const pokemonListRef = useRef(null);
+  const prevScrollY = useRef(0);
 
-  useEffect(()=>{
+  const darkMode = useSelector((state) => state.theme.darkMode);
+  const data = useSelector((state) => state.fetchData.pokemons);
+  const isLoading = useSelector((state) => state.fetchData.isLoading);
+  const error = useSelector((state) => state.fetchData.error);
+
+  const fetchMoreData = () => {
+    // Save current scroll position
+    prevScrollY.current = pokemonListRef.current.scrollTop;
+    // Fetch more data
+    setOffsetval(prevOffset => prevOffset + 20);
+  };
+
+  useEffect(() => {
     dispatch(FETCH_POKEMONS_REQUEST({ apiURL: `https://pokeapi.co/api/v2/pokemon/?offset=${offsetval}&limit=20`, page: "PLP" }));
-  },[offsetval])
+  }, [offsetval, dispatch]);
 
+  const handleScroll = () => {
+    if (pokemonListRef.current) {
+      const { scrollTop, clientHeight, scrollHeight } = pokemonListRef.current;
+      if (scrollTop + clientHeight >= scrollHeight) {
+        fetchMoreData();
+      }
+    }
+  };
 
-  const darkMode = useSelector((state)=>state.theme.darkMode);
-   // const {data, isLoading, error} = useQuery('pokemons', () => fetchData(apiURL));
-   const data = useSelector((state) => state.fetchData.pokemons);
-   const isLoading = useSelector((state) => state.fetchData.isLoading);
-   const error = useSelector((state) => state.fetchData.error);
-   // console.log(data);
-    if (isLoading) return <div>Loading...</div>;
-    if (error) return <div>Error: {error.message}</div>;
-    const fetchMoreData = () => {
-      // Trigger fetching more data when reaching the end of the page
-      setOffsetval(prevOffset => prevOffset + 20);
+  useEffect(() => {
+    if (pokemonListRef.current) {
+      pokemonListRef.current.addEventListener('scroll', handleScroll);
+    }
+    return () => {
+      if (pokemonListRef.current) {
+        pokemonListRef.current.removeEventListener('scroll', handleScroll);
+      }
     };
+  }, [handleScroll]);
 
-    return (
-      <div>
-      <Navbar /> 
+  useEffect(() => {
+    // Restore previous scroll position after new data is loaded
+    if (pokemonListRef.current) {
+      pokemonListRef.current.scrollTo(0, prevScrollY.current);
+    }
+  }, [data]);
+
+ // if (isLoading) return <div>Loading...</div>;
+ // if (error) return <div>Error: {error.message}</div>;
+
+  return (
+    <div>
+      <Navbar />
       <div className={`PLPtitle ${darkMode ? 'dark' : ''}`}>Pokemons List</div>
-      <InfiniteScroll
-        dataLength={data.length} 
-        next={fetchMoreData}
-        hasMore={true} 
-        loader={<h4>Loading...</h4>}
-        endMessage={<p>No more pokemons to show</p>}
-        className={`pokemon-grid ${darkMode ? 'dark' : ''}`}
-      >
+      <div ref={pokemonListRef} className={`pokemon-grid ${darkMode ? 'dark' : ''}`} style={{ overflowY: 'auto', maxHeight: 'calc(100vh - 100px)' }}>
         {data?.length > 0 ? data.map((pokemon, index) => (
-          <PokemonCard key={index} pokemon={pokemon} id={index + 1} />
+          <PokemonCard key={index} pokemon={pokemon} id={index + 1} isLoading={isLoading}/>
         )) : <div>No Data</div>}
-      </InfiniteScroll>
       </div>
-    );
+    </div>
+  );
+};
 
-}
-
-export default PLP
+export default PLP;
