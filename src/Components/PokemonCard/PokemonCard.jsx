@@ -17,7 +17,12 @@ import { useSelector } from 'react-redux';
 //Pokemon Card -> Displays the data of each pokemon in the form of Cards
 
 const PokemonCard = ({pokemon, id, isLoading}) => {
-  const imageURL = getImageURL(id);
+  const getImage = (id) => {
+    const paddedId = `00000${id}`.slice(-3);
+    return `https://assets.pokemon.com/assets/cms2/img/pokedex/full/${paddedId}.png`;
+  };
+  
+  const imageURL = getImage(id);
   //const {darkMode} = useContext(ThemeContext);
   const darkMode = useSelector((state)=>state.theme.darkMode);
 

@@ -14,7 +14,7 @@ const PLP = () => {
   const darkMode = useSelector((state) => state.theme.darkMode);
   const data = useSelector((state) => state.fetchData.pokemons);
   const isLoading = useSelector((state) => state.fetchData.isLoading);
-  const error = useSelector((state) => state.fetchData.error);
+  //const error = useSelector((state) => state.fetchData.error);
 
   const fetchMoreData = () => {
     // Save current scroll position
