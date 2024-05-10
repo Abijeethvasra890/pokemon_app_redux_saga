@@ -42,7 +42,7 @@ const Navbar = () => {
                     <NavLink to="/pokemons">Pokemon List</NavLink>
                   </li>
                   {isAuthenticated?
-                    <Button onClick={handleLogout} className="mr-5">Logout</Button>:""
+                    <Button onClick={handleLogout}>Logout</Button>:""
                   }
                 </ul>
                
