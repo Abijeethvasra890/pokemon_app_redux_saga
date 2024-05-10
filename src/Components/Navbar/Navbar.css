@@ -8,6 +8,7 @@
 
 .buttonsRight {
     display: flex;
+    align-items: center;
 }
 
 .title {
@@ -18,6 +19,8 @@
     font-style: italic;
     margin-bottom: 5px;
 }
+
+
 
 /* Media query for mobile view */
 @media (max-width: 768px) {

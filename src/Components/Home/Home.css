@@ -8,6 +8,17 @@
     font-style: italic;
 }
 
+.hero-text{
+    margin:100px; 
+    position: absolute;
+    top: 10%;
+    left: 25%;
+    transform: translate(-50%, -50%);
+    text-align: left; 
+    color: white; 
+    z-index: 1;
+}
+
 .text {
     color: var(--foreground);
     margin-top: 10px;
@@ -38,6 +49,10 @@
     .text{
         font-size: 12px;
         color: var(--home-text-color-mobile);
+        
+    }
+    .hero-text{
+        margin: 50px;
     }
     .text-body{
         margin-top: 700px;

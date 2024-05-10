@@ -28,21 +28,16 @@ const Navbar = () => {
           <div className='usertext'>{isAuthenticated ? `Hi, ${userName}` : <NameModal />}</div>
           
           <div className='buttonsRight'>
-           
-            <div >
                 <Link className = "nav-item nav-link active" to="/">
-                  <Button className="m-2">Home</Button>
+                  <Button className="mr-2">Home</Button>
                 </Link>
                 <Link className = "nav-item nav-link" to="/pokemons"> 
-                  <Button className="m-2">Pokemon List</Button>
+                  <Button className="mr-5">Pokemon List</Button>
                 </Link>
                 {isAuthenticated?
-                  <Button onClick={handleLogout} className="m-2">Logout</Button>:""
+                  <Button onClick={handleLogout} className="mr-5">Logout</Button>:""
                 }
                 <Toggle />
-                
-            </div>
-           
           </div>
         </nav>
     </div>
