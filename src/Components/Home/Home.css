@@ -7,18 +7,7 @@
     font-weight: 600;
     font-style: italic;
 }
-/* Home.css */
 
-/* Lazy loading placeholder styles */
-.hero.lazy-loading {
-    background-color: orange;
-  }
-  
-  .hero {
-    width: 100%;
-    height: auto;
-  }
-  
 
 .hero-text{
     margin:100px; 
