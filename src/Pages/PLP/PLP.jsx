@@ -64,7 +64,12 @@ const PLP = () => {
       <div ref={pokemonListRef} className={`pokemon-grid ${darkMode ? 'dark' : ''}`} style={{ overflowY: 'auto', maxHeight: 'calc(100vh - 100px)' }}>
         {data?.length > 0 ? data.map((pokemon, index) => (
           <PokemonCard key={index} pokemon={pokemon} id={index + 1} isLoading={isLoading}/>
-        )) : <div>No Data</div>}
+        )) : 
+        <div class="text-center">
+          <div class="spinner-border" role="status">
+            <span class="sr-only">Loading...</span>
+          </div>
+        </div>}
       </div>
     </div>
   );

@@ -7,7 +7,21 @@
     font-weight: 600;
     font-style: italic;
 }
-
+/* Skeleton loading effect styles */
+.skeleton {
+    background-color: #f0f0f0; /* Light gray background */
+    animation: pulse 1.5s infinite alternate; /* Animation for pulsating effect */
+  }
+  
+  @keyframes pulse {
+    0% {
+      opacity: 0.6; /* Initial opacity */
+    }
+    100% {
+      opacity: 1; /* Final opacity */
+    }
+  }
+  
 
 .hero-text{
     margin:100px; 
