@@ -26,7 +26,7 @@ const Navbar = () => {
   return (
     <div>  
         <nav className={`navbar ${darkMode ? 'dark' : ''}`}>
-          <div className="title">Pokémon App</div>
+          <Link to="/"><div className="title">Pokémon App</div></Link>
           <div className='usertext'>{isAuthenticated ? `Hi, ${userName}` : <NameModal />}</div>
           <div className='buttonsRight'>
                 <div className="menu" onClick={() => setMenuOpen(!menuOpen)}>
